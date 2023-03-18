@@ -3,6 +3,10 @@ from torch import nn
 
 
 class Model(torch.nn.Module):
+    """
+    CNN optimized for speed on CPU to get mediocre accuracy ~55%
+    """
+
     def __init__(self, num_channels: int, num_classes: int) -> None:
         super(Model, self).__init__()
         self.conv1 = nn.Conv2d(in_channels=num_channels,
@@ -18,6 +22,9 @@ class Model(torch.nn.Module):
         self.linear3 = nn.Linear(64, num_classes, True)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """
+        Forward pass of the model.
+        """
         x = self.conv1(x)
         x = self.pool1(x)
         x = self.ReLU(x)

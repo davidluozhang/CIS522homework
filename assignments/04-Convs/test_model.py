@@ -22,7 +22,8 @@ def test_fn_signatures():
     methods = ["forward"]
     for method in methods:
         assert (
-            signature(getattr(net, method)).return_annotation is not inspect._empty
+            signature(getattr(net, method)
+                      ).return_annotation is not inspect._empty
         ), f"The return type of `{method}` must be annotated."
 
         # Arguments must be typed.
@@ -51,3 +52,9 @@ def test_docstrings():
         assert (
             class_.__doc__ is not None
         ), f"The class `{class_}` must have a docstring."
+
+
+if __name__ == "__main__":
+    test_has_correct_attributes()
+    test_fn_signatures()
+    test_docstrings()
