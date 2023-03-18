@@ -33,13 +33,15 @@ def get_cifar10_data() -> Tuple[DataLoader, DataLoader]:
         root="data/cifar10", train=True, download=True, transform=CONFIG.transforms
     )
     # Create a data loader for the training data:
-    train_loader = DataLoader(train_data, batch_size=CONFIG.batch_size, shuffle=True)
+    train_loader = DataLoader(
+        train_data, batch_size=CONFIG.batch_size, shuffle=True)
     # Get the test data:
     test_data = CIFAR10(
         root="data/cifar10", train=False, download=True, transform=CONFIG.transforms
     )
     # Create a data loader for the test data:
-    test_loader = DataLoader(test_data, batch_size=CONFIG.batch_size, shuffle=True)
+    test_loader = DataLoader(
+        test_data, batch_size=CONFIG.batch_size, shuffle=True)
     # Return the data loaders:
     return train_loader, test_loader
 
